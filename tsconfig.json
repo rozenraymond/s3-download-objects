@@ -1,0 +1,16 @@
+{
+ "compilerOptions": {
+  "module": "commonjs",
+  "lib": ["ESNext", "dom"],
+  "target": "es6",
+  "esModuleInterop": true,
+  "moduleResolution": "node",
+  "noImplicitAny": true,
+  "strict": true,
+  "sourceMap": true,
+  "rootDir": "src",
+  "outDir": "lib"
+ },
+ "include": ["src", "typings"],
+ "exclude": ["node_modules"]
+}

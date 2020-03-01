@@ -1,0 +1,9 @@
+# System properties
+.DS_Store
+.vscode
+
+# Package dependencies
+node_modules
+
+# Compiled directory
+lib
