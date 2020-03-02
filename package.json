@@ -9,6 +9,7 @@
   "test": "yarn run test"
  },
  "devDependencies": {
+  "@types/bluebird": "^3.5.29",
   "@types/node": "^13.7.7",
   "prettier": "^1.19.1",
   "ts-node": "^8.6.2",
@@ -29,6 +30,7 @@
  },
  "homepage": "https://github.com/rozenraymond/s3-download-objects#readme",
  "dependencies": {
-  "aws-sdk": "^2.630.0"
+  "aws-sdk": "^2.630.0",
+  "bluebird": "^3.7.2"
  }
 }
