@@ -1,9 +1,9 @@
 import fs from 'fs';
-import { Readable } from 'stream';
 
+// Content data could be of any type - Hence, setting it to "any" type
 export const writeContentToFile = (
   filePath: string,
-  content: Buffer | Uint8Array | Blob | string | Readable
+  content: any // eslint-disable-line
 ): Promise<void> =>
   new Promise((resolve, reject) => {
     fs.writeFile(filePath, content, err => {
