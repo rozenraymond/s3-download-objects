@@ -5,6 +5,9 @@
 # Package dependencies
 node_modules
 
+# yarn
+yarn-*
+
 # Compiled directory
 lib
 
