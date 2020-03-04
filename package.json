@@ -4,7 +4,7 @@
   "description": "Download all objects from a s3 bucket using Node.js",
   "main": "lib/index.js",
   "scripts": {
-    "start": "ts-node-dev --respawn --transpileOnly src/index.ts",
+    "clone": "ts-node-dev --respawn --transpileOnly src/index.ts",
     "build": "tsc",
     "test": "jest",
     "format": "prettier --write '**/*.{js,ts}'",
