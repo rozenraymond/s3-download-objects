@@ -1,6 +1,7 @@
-import { readContentFromFile, removeFile } from '../fixtures';
+import { KMS } from 'aws-sdk';
 
-import { saveDownloadedListToFile } from './saveDownloadedListToFile';
+import { readContentFromFile, removeFile } from '../fixtures';
+import { saveEncryptedListToFile } from './saveEncryptedListToFile';
 
 const pathToFile = `${process.cwd()}/downloaded.txt`;
 
@@ -16,10 +17,14 @@ describe('Downloaded list', () => {
       'breed/frenchies.png',
     ];
 
-    await saveDownloadedListToFile(filenames);
+    const buffer = Buffer.from(filenames.join('\n'));
+
+    await saveEncryptedListToFile(
+      buffer as Pick<KMS.Types.EncryptResponse, 'CiphertextBlob'>
+    );
 
     const content = await readContentFromFile(pathToFile);
 
-    expect(content).toEqual(filenames.join('\n'));
+    expect(content).toEqual(buffer.toString());
   });
 });

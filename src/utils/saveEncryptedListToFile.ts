@@ -1,17 +1,10 @@
 import * as fs from 'fs';
+import { KMS } from 'aws-sdk';
 
-export const saveDownloadedListToFile = (
-  list: string[]
+export const saveEncryptedListToFile = (
+  content: Pick<KMS.Types.EncryptResponse, 'CiphertextBlob'>
 ): Promise<void | Error> => {
   const filename = 'downloaded.txt';
-  const content = list.join('\n');
-
-  // TODO: Encrypt downloaded list item using KMS
-  // List key
-  //   If found, use key
-  //   If not found, generate new key
-  // Encrypt content using key specified or generated key
-  // Write encrypted content to a file
 
   return new Promise((resolve, reject) => {
     fs.writeFile(`${process.cwd()}/${filename}`, content, err => {
