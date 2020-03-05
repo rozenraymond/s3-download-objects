@@ -4,13 +4,15 @@
   "description": "Download all objects from a s3 bucket using Node.js",
   "main": "lib/index.js",
   "scripts": {
-    "clone": "ts-node-dev --respawn --transpileOnly src/index.ts",
+    "clone": "ts-node src/index.ts",
+    "dev": "ts-node-dev --respawn --transpileOnly src/index.ts",
     "build": "tsc",
     "test": "jest",
     "format": "prettier --write '**/*.{js,ts}'",
+    "check:typing": "tsc --noEmit",
     "check:format": "prettier --check",
     "check:lint": "eslint",
-    "check:all": "yarn run check:format && yarn run check:lint && yarn run check:compile"
+    "check:all": "yarn run check:format && yarn run check:lint && yarn run check:typing"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.29",
