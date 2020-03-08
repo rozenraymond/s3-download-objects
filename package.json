@@ -6,11 +6,16 @@
     "clone": "node lib/index.js",
     "dev": "nodemon --exec babel-node src/index.js --ignore \"src/test\"",
     "build": "babel src --out-dir lib",
-    "test": "jest",
+    "test:unit": "jest",
+    "test:unit:coverage": "jest --coverage",
     "format": "prettier --write '**/*.js'",
     "check:format": "prettier --check '**/*.js'",
     "check:lint": "eslint",
     "check": "yarn run check:format && yarn run check:lint"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.630.0",
+    "bluebird": "^3.7.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -35,24 +40,6 @@
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rozenraymond/s3-download-objects.git"
-  },
-  "keywords": [
-    "s3",
-    "node"
-  ],
-  "author": "Rozen Raymond <rozenr.raymond@gmail.com> (https://rozie.dev)",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rozenraymond/s3-download-objects/issues"
-  },
-  "homepage": "https://github.com/rozenraymond/s3-download-objects#readme",
-  "dependencies": {
-    "aws-sdk": "^2.630.0",
-    "bluebird": "^3.7.2"
-  },
   "lint-staged": {
     "*.{js,ts}": [
       "pretty-quick",
@@ -63,5 +50,23 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "engines": {
+    "node": ">= 12.0.0"
+  },
+  "engineStrict": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rozenraymond/s3-download-objects.git"
+  },
+  "keywords": [
+    "s3",
+    "node"
+  ],
+  "author": "Rozen Raymond <rozenr.raymond@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rozenraymond/s3-download-objects/issues"
+  },
+  "homepage": "https://github.com/rozenraymond/s3-download-objects#readme"
 }

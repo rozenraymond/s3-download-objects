@@ -19,3 +19,6 @@ downloaded.txt
 
 # LocalStack
 .localstack
+
+# Jest coverage file
+output

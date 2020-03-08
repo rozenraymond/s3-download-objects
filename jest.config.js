@@ -1,5 +1,7 @@
 module.exports = {
-  testMatch: ['**/test/**/*.(js)', '**/?(*.)+(spec|test).(ts)'],
+  testMatch: ['**/test/**/*.(js)', '**/?(*.)+(test).(js)'],
   testPathIgnorePatterns: ['/node_modules/', '/lib/'],
   testEnvironment: 'node',
+  collectCoverageFrom: ['src/**/*.js'],
+  coverageDirectory: 'output/coverage/jest',
 };
