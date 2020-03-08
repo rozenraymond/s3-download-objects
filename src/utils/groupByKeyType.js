@@ -1,13 +1,6 @@
-interface BucketObjectKeyType {
-  files: string[];
-  directories: string[];
-}
-
-export const groupByKeyType = (
-  bucketObjects: AWS.S3.Object[]
-): BucketObjectKeyType => {
+const groupByKeyType = bucketObjects => {
   return bucketObjects.reduce(
-    (accumulator: BucketObjectKeyType, currentObject: AWS.S3.Object) => {
+    (accumulator, currentObject) => {
       const { files, directories } = accumulator;
 
       const currentObjectKey = currentObject.Key;
@@ -26,3 +19,5 @@ export const groupByKeyType = (
     { files: [], directories: [] }
   );
 };
+
+export default groupByKeyType;

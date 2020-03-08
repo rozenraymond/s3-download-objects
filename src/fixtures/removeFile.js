@@ -1,8 +1,8 @@
-import { exists, unlink } from 'fs';
+import { access, unlink } from 'fs';
 
-export const removeFile = (filename: string): Promise<void> => {
+const removeFile = filename => {
   return new Promise((resolve, reject) => {
-    exists(filename, res => {
+    access(filename, res => {
       if (res) {
         unlink(filename, err => {
           if (err) {
@@ -20,3 +20,5 @@ export const removeFile = (filename: string): Promise<void> => {
     });
   });
 };
+
+export default removeFile;

@@ -1,8 +1,6 @@
-import AWS, { KMS } from 'aws-sdk';
+import AWS from 'aws-sdk';
 
-export const getKMSKeyByAlias = async (
-  aliasName: string
-): Promise<KMS.Types.AliasListEntry | undefined> => {
+const getKMSKeyByAlias = async aliasName => {
   if (!aliasName) return undefined;
 
   const kms = new AWS.KMS();
@@ -12,3 +10,5 @@ export const getKMSKeyByAlias = async (
     ? aliases.Aliases.find(alias => alias.AliasName === `alias/${aliasName}`)
     : undefined;
 };
+
+export default getKMSKeyByAlias;

@@ -1,15 +1,12 @@
-import AWS, { S3 } from 'aws-sdk';
+import AWS from 'aws-sdk';
 import AWSMock from 'aws-sdk-mock';
 
-import * as File from './writeContentToFile';
+import downloadBucketObjects from '../utils/downloadBucketObjects';
+import writeContentToFile from '../utils/writeContentToFile';
 
-jest.mock('./writeContentToFile', () => {
-  return {
-    writeContentToFile: jest.fn().mockImplementation(() => Promise.resolve()),
-  };
-});
-
-import { downloadBucketObjects } from './downloadBucketObjects';
+jest.mock('../utils/writeContentToFile', () =>
+  jest.fn().mockImplementation(() => Promise.resolve())
+);
 
 describe('downloadBucketObjects', () => {
   beforeEach(() => {
@@ -28,19 +25,15 @@ describe('downloadBucketObjects', () => {
     ];
 
     const mockFn = jest.fn();
-    AWSMock.mock(
-      'S3',
-      'getObject',
-      (params: S3.Types.GetObjectRequest, callback: Function) => {
-        mockFn(params.Key);
-        callback(null, { Body: params.Key });
-      }
-    );
+    AWSMock.mock('S3', 'getObject', (params, callback) => {
+      mockFn(params.Key);
+      callback(null, { Body: params.Key });
+    });
 
     await downloadBucketObjects(files, 'test-bucket');
 
     expect(mockFn).toHaveBeenCalledTimes(files.length);
     expect(mockFn.mock.calls).toEqual([[files[0]], [files[1]], [files[2]]]);
-    expect(File.writeContentToFile).toHaveBeenCalledTimes(files.length);
+    expect(writeContentToFile).toHaveBeenCalledTimes(files.length);
   });
 });

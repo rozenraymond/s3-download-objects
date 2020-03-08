@@ -1,7 +1,5 @@
-import { KMS } from 'aws-sdk';
-
 import { readContentFromFile, removeFile } from '../fixtures';
-import { saveEncryptedListToFile } from './saveEncryptedListToFile';
+import saveEncryptedListToFile from '../utils/saveEncryptedListToFile';
 
 const pathToFile = `${process.cwd()}/downloaded.txt`;
 
@@ -19,9 +17,7 @@ describe('Downloaded list', () => {
 
     const buffer = Buffer.from(filenames.join('\n'));
 
-    await saveEncryptedListToFile(
-      buffer as Pick<KMS.Types.EncryptResponse, 'CiphertextBlob'>
-    );
+    await saveEncryptedListToFile(buffer);
 
     const content = await readContentFromFile(pathToFile);
 

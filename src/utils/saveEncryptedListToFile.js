@@ -1,9 +1,6 @@
-import * as fs from 'fs';
-import { KMS } from 'aws-sdk';
+import fs from 'fs';
 
-export const saveEncryptedListToFile = (
-  content: Pick<KMS.Types.EncryptResponse, 'CiphertextBlob'>
-): Promise<void | Error> => {
+const saveEncryptedListToFile = content => {
   const filename = 'downloaded.txt';
 
   return new Promise((resolve, reject) => {
@@ -20,3 +17,5 @@ export const saveEncryptedListToFile = (
     });
   });
 };
+
+export default saveEncryptedListToFile;

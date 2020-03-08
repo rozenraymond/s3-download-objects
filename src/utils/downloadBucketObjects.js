@@ -1,15 +1,12 @@
 import { Promise as BluebirdPromise } from 'bluebird';
 import AWS from 'aws-sdk';
 
-import { writeContentToFile } from './writeContentToFile';
+import writeContentToFile from './writeContentToFile';
 
-export const downloadBucketObjects = async (
-  s3ObjectKeys: string[],
-  bucketName: string
-): Promise<void> => {
+const downloadBucketObjects = async (s3ObjectKeys, bucketName) => {
   await BluebirdPromise.map(
     s3ObjectKeys,
-    async (key: string) => {
+    async key => {
       const s3 = new AWS.S3();
       const result = await s3
         .getObject({
@@ -24,3 +21,5 @@ export const downloadBucketObjects = async (
     { concurrency: 4 }
   );
 };
+
+export default downloadBucketObjects;

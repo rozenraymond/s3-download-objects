@@ -1,7 +1,7 @@
-import AWS, { KMS } from 'aws-sdk';
+import AWS from 'aws-sdk';
 import AWSMock from 'aws-sdk-mock';
 
-import { getKMSKeyByAlias } from './getKMSKeyByAlias';
+import getKMSKeyByAlias from '../utils/getKMSKeyByAlias';
 
 describe('getKMSKeyByAlias', () => {
   beforeEach(() => {
@@ -24,26 +24,18 @@ describe('getKMSKeyByAlias', () => {
       AliasArn: 'arn:aws:kms:frechie-123',
       TargetKeyId: 'abc-123',
     };
-    AWSMock.mock(
-      'KMS',
-      'listAliases',
-      (params: KMS.ListAliasesRequest, callback: Function) => {
-        callback(null, { Aliases: [expectedAlias] });
-      }
-    );
+    AWSMock.mock('KMS', 'listAliases', (params, callback) => {
+      callback(null, { Aliases: [expectedAlias] });
+    });
 
     const alias = await getKMSKeyByAlias('frenchies');
     expect(alias).toEqual(expectedAlias);
   });
 
   it('should return "undefined" if no alias found', async () => {
-    AWSMock.mock(
-      'KMS',
-      'listAliases',
-      (params: KMS.ListAliasesRequest, callback: Function) => {
-        callback(null, { Aliases: [] });
-      }
-    );
+    AWSMock.mock('KMS', 'listAliases', (params, callback) => {
+      callback(null, { Aliases: [] });
+    });
 
     const alias = await getKMSKeyByAlias('shiba-inu');
     expect(alias).toBeUndefined();

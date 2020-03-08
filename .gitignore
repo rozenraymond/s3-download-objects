@@ -13,3 +13,9 @@ lib
 
 # Generated files
 downloaded.txt
+
+# Environment
+.env
+
+# LocalStack
+.localstack

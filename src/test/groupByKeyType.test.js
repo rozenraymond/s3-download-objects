@@ -1,5 +1,4 @@
-import AWS from 'aws-sdk';
-import { groupByKeyType } from './groupByKeyType';
+import groupByKeyType from '../utils/groupByKeyType';
 
 describe('groupByKeyType', () => {
   it('should group object key to files and directories', () => {
@@ -8,7 +7,7 @@ describe('groupByKeyType', () => {
       { Key: 'puppies/breed/' },
       { Key: 'puppies/breed/shiba-inu.jpg' },
       { Key: 'puppies/breed/french-bulldog.png' },
-    ] as AWS.S3.Object[];
+    ];
     const expected = {
       files: [
         'puppies/breed/shiba-inu.jpg',

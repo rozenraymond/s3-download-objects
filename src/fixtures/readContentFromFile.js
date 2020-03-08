@@ -1,6 +1,6 @@
 import { readFile } from 'fs';
 
-export const readContentFromFile = (filename: string): Promise<string> => {
+const readContentFromFile = filename => {
   return new Promise((resolve, reject) => {
     readFile(filename, 'utf-8', (err, data) => {
       if (err) {
@@ -11,3 +11,5 @@ export const readContentFromFile = (filename: string): Promise<string> => {
     });
   });
 };
+
+export default readContentFromFile;

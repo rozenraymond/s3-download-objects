@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+import writeContentToFile from '../utils/writeContentToFile';
+
 jest.mock('fs', () => {
   return {
     writeFile: jest.fn().mockImplementation((filepath, opts, callback) => {
@@ -9,8 +11,6 @@ jest.mock('fs', () => {
     }),
   };
 });
-
-import { writeContentToFile } from './writeContentToFile';
 
 describe('writeContentToFile', () => {
   it('should call "fs.writeFile"', async () => {

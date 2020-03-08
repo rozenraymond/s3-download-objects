@@ -1,12 +1,11 @@
-import * as fs from 'fs';
+import fs from 'fs';
+import createBucketDirectories from '../utils/createBucketDirectories';
 
 jest.mock('fs', () => {
   return {
     mkdir: jest.fn(),
   };
 });
-
-import { createBucketDirectories } from './createBucketDirectories';
 
 describe('createBucketDirectories', () => {
   it('should call "fs.mkdir" when creating directories from list', async () => {

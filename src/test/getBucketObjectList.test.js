@@ -1,7 +1,7 @@
-import AWS, { S3 } from 'aws-sdk';
+import AWS from 'aws-sdk';
 import AWSMock from 'aws-sdk-mock';
 
-import { getBucketObjectList } from './getBucketObjectList';
+import getBucketObjectList from '../utils/getBucketObjectList';
 
 describe('getBucketObjectList', () => {
   beforeEach(() => {
@@ -14,14 +14,10 @@ describe('getBucketObjectList', () => {
 
   it('should call to list bucket objects', async () => {
     const mockFn = jest.fn();
-    AWSMock.mock(
-      'S3',
-      'listObjectsV2',
-      (params: S3.Types.ListObjectsV2Request, callback: Function) => {
-        mockFn(params.Bucket);
-        callback(null, { Contents: [{ Key: 'frenchies.jpg' }] });
-      }
-    );
+    AWSMock.mock('S3', 'listObjectsV2', (params, callback) => {
+      mockFn(params.Bucket);
+      callback(null, { Contents: [{ Key: 'frenchies.jpg' }] });
+    });
 
     const list = await getBucketObjectList('puppies-bucket');
 
