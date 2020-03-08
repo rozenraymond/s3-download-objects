@@ -1,7 +1,7 @@
 import AWS from 'aws-sdk';
 import AWSMock from 'aws-sdk-mock';
 
-import getKMSKeyByAlias from '../utils/getKMSKeyByAlias';
+import getKMSKeyByAlias from '../src/utils/getKMSKeyByAlias';
 
 describe('getKMSKeyByAlias', () => {
   beforeEach(() => {

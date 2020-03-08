@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import writeContentToFile from '../utils/writeContentToFile';
+import writeContentToFile from '../src/utils/writeContentToFile';
 
 jest.mock('fs', () => {
   return {

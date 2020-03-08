@@ -6,19 +6,26 @@ import saveEncryptedListToFile from './utils/saveEncryptedListToFile';
 import getKMSKeyByAlias from './utils/getKMSKeyByAlias';
 import encryptContentByKMSKey from './utils/encryptContentByKMSKey';
 
-const cloneBucket = async (bucketName, aliasKMSKeyName) => {
+export const cloneS3Bucket = async () => {
+  const args = process.argv.slice(2, 4);
+
+  if (!args.length) {
+    throw new Error(
+      'No bucket name specified. Please enter the bucket name as first argument. Eg: yarn run clone <bucket-name> <kms-key-alias-name>'
+    );
+  }
+
+  const bucketName = args[0];
+  const aliasKMSKeyName = args[1];
+
   if (!aliasKMSKeyName) {
-    throw new Error('KMS alias key not found');
+    throw new Error(
+      'KMS key alias name not found. Please enter the KMS key alias name as second argument. Eg: yarn run clone <bucket-name> <kms-key-alias-name>'
+    );
   }
 
   try {
     const aliasKeyInfo = await getKMSKeyByAlias(aliasKMSKeyName);
-
-    if (!aliasKeyInfo || !aliasKeyInfo.TargetKeyId) {
-      throw new Error(
-        `No KMS alias key found. Alias=[alias/${aliasKMSKeyName}]`
-      );
-    }
 
     const s3ListObjects = await getBucketObjectList(bucketName);
     const { files, directories } = groupByKeyType(s3ListObjects);
@@ -37,10 +44,13 @@ const cloneBucket = async (bucketName, aliasKMSKeyName) => {
 
     // Create file containing encrypted downloaded item name
     await saveEncryptedListToFile(encryptedList.CiphertextBlob);
+    console.log(
+      `✅ Download completed. Cloned s3 bucket is at ${process.cwd()}/${bucketName}`
+    );
   } catch (e) {
-    console.error(`Fail to clone S3 bucket. Bucket=[${bucketName}]`);
+    console.error(
+      `Fail to clone S3 bucket with bucket name of ${bucketName} and KMS key alias name of ${aliasKMSKeyName}`
+    );
     throw e;
   }
 };
-
-export default cloneBucket;

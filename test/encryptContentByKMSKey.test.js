@@ -1,6 +1,6 @@
 import AWS from 'aws-sdk';
 import AWSMock from 'aws-sdk-mock';
-import encryptContentByKMSKey from '../utils/encryptContentByKMSKey';
+import encryptContentByKMSKey from '../src/utils/encryptContentByKMSKey';
 
 describe('encryptContentByKMSKey', () => {
   beforeEach(() => {

@@ -1,47 +1,65 @@
 # s3-download-objects
 
-Download all s3 objects from a bucket using Node.js
+This is a Node.js script to download all objects from a S3 bucket locally with the same directory structure.
 
-## ⬇️ Install Depedencies
+Prerequisite before running script to clone your s3 bucket:
 
-Run
+- Node
+  - version 12 or higher
+- AWS
+  - AWS account is setup
+  - AWS credentials are configured locally. [More information](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html)
+  - Existing S3 bucket to be cloned
+  - Existing KMS Key Alias Name that can be used to encrypt download.txt
 
-```
+## ⬇️ Installation
+
+You can either use the `npm` or `yarn` to installl depedencies.
+
+```sh
 yarn install
-```
-
-## 🏁 Start Cloning
-
-Prerequisite before you can run the script to clone:
-
-- AWS account is setup
-- AWS credentials are configured locally. [More information](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html)
-- Existing S3 bucket to be cloned
-
-Run
-
-```
-yarn run clone your-bucket-name
 ```
 
 ## 📦 Build
 
 Run
 
-```
+```sh
 yarn build
+```
+
+## 🏁 Start Cloning
+
+Clone your bucket with the compiled code from build.
+
+Run
+
+```sh
+yarn run clone <bucket-name> <kms-alias-key-name>
 ```
 
 ## 🧪 Test
 
+Run unit test
+
+```sh
+yarn test:unit
+```
+
+To generate unit test coverage report.
 Run
 
-```
-yarn test
+```sh
+yarn test:unit:coverage
 ```
 
-## Lint
+## ✨Lint
 
-```
+```sh
 yarn run check:lint
 ```
+
+## Future Improvement
+
+- Integration Tests
+- Logs

@@ -1,5 +1,9 @@
 import AWS from 'aws-sdk';
 
+AWS.config.update({
+  region: 'ap-southeast-2',
+});
+
 const getKMSKeyByAlias = async aliasName => {
   if (!aliasName) return undefined;
 

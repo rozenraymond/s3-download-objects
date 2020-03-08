@@ -11,7 +11,7 @@ const saveEncryptedListToFile = content => {
       }
 
       console.log(
-        `File created with list of downloaded S3 objects. File name: ${filename}`
+        `🔑 Created encrypted ${filename} file containing downloaded S3 objects.`
       );
       resolve();
     });

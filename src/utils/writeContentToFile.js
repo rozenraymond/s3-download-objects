@@ -6,7 +6,7 @@ const writeContentToFile = (filePath, content) =>
       if (err) {
         reject(err);
       }
-      console.log('File downloaded. File path:', filePath);
+      console.log('📃 File downloaded. File path:', filePath);
       resolve();
     });
   });
