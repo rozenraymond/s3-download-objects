@@ -6,8 +6,10 @@
     "clone": "node lib/index.js",
     "dev": "nodemon --exec babel-node src/index.js --ignore \"src/test\"",
     "build": "babel src --out-dir lib",
-    "test:unit": "jest",
-    "test:unit:coverage": "jest --coverage",
+    "pretest": "./scripts/test-setup.sh",
+    "test": "yarn run test:coverage",
+    "posttest": "./scripts/test-cleanup.sh",
+    "test:coverage": "jest --coverage",
     "format": "prettier --write '**/*.js'",
     "check:format": "prettier --check '**/*.js'",
     "check:lint": "eslint",
@@ -15,7 +17,8 @@
   },
   "dependencies": {
     "aws-sdk": "^2.630.0",
-    "bluebird": "^3.7.2"
+    "bluebird": "^3.7.2",
+    "convict": "^5.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

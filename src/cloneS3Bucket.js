@@ -6,7 +6,7 @@ import saveEncryptedListToFile from './utils/saveEncryptedListToFile';
 import getKMSKeyByAlias from './utils/getKMSKeyByAlias';
 import encryptContentByKMSKey from './utils/encryptContentByKMSKey';
 
-export const cloneS3Bucket = async () => {
+const cloneS3Bucket = async () => {
   const args = process.argv.slice(2, 4);
 
   if (!args.length) {
@@ -54,3 +54,5 @@ export const cloneS3Bucket = async () => {
     throw e;
   }
 };
+
+export default cloneS3Bucket;

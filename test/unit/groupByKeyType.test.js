@@ -1,4 +1,4 @@
-import groupByKeyType from '../src/utils/groupByKeyType';
+import groupByKeyType from '../../src/utils/groupByKeyType';
 
 describe('groupByKeyType', () => {
   it('should group object key to files and directories', () => {

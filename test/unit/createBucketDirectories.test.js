@@ -1,5 +1,6 @@
 import fs from 'fs';
-import createBucketDirectories from '../src/utils/createBucketDirectories';
+
+import createBucketDirectories from '../../src/utils/createBucketDirectories';
 
 jest.mock('fs', () => {
   return {

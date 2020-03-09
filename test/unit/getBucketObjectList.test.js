@@ -1,7 +1,7 @@
 import AWS from 'aws-sdk';
 import AWSMock from 'aws-sdk-mock';
 
-import getBucketObjectList from '../src/utils/getBucketObjectList';
+import getBucketObjectList from '../../src/utils/getBucketObjectList';
 
 describe('getBucketObjectList', () => {
   beforeEach(() => {

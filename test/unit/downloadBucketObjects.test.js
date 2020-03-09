@@ -1,10 +1,10 @@
 import AWS from 'aws-sdk';
 import AWSMock from 'aws-sdk-mock';
 
-import downloadBucketObjects from '../src/utils/downloadBucketObjects';
-import writeContentToFile from '../src/utils/writeContentToFile';
+import downloadBucketObjects from '../../src/utils/downloadBucketObjects';
+import writeContentToFile from '../../src/utils/writeContentToFile';
 
-jest.mock('../src/utils/writeContentToFile', () =>
+jest.mock('../../src/utils/writeContentToFile', () =>
   jest.fn().mockImplementation(() => Promise.resolve())
 );
 
