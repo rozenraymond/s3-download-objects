@@ -3,11 +3,7 @@
 set -eou pipefail
 
 # Set environment variable
-TEST_BUCKET_NAME=test-bucket
-LOCAL_FILE=test-file.txt
-LOCALSTACK_S3=http://localhost:4572
-LOCALSTACK_KMS=http://localhost:4599
-TEST_KMS_ALIAS_NAME=alias/s3-test-key
+source ./scripts/env/test.sh
 
 # Set to run as test environment
 NODE_ENV=test

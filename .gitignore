@@ -13,6 +13,7 @@ lib
 
 # Generated files
 downloaded.txt
+test-file.txt
 
 # Environment
 .env

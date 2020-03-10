@@ -1,7 +1,8 @@
 module.exports = {
-  testMatch: ['**/test/**/*.(js)', '**/?(*.)+(test).(js)'],
+  displayName: 'unit',
+  testMatch: ['<rootDir>/test/unit/*.test.js'],
   testPathIgnorePatterns: ['/node_modules/', '/lib/'],
   testEnvironment: 'node',
-  collectCoverageFrom: ['src/**/*.js'],
+  collectCoverageFrom: ['<rootDir>/src/**/*.js'],
   coverageDirectory: 'output/coverage/jest',
 };

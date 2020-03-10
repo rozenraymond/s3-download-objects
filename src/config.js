@@ -8,12 +8,12 @@ const config = convict({
   },
   s3TestEndpoint: {
     format: String,
-    default: 'http://localhost:4572',
+    default: 'http://172.31.0.2:4572', // Based on Docker IP
     env: 'LOCALSTACK_S3',
   },
   kmsTestEndpoint: {
     format: String,
-    default: 'http://localhost:4599',
+    default: 'http://172.31.0.2:4599', // Based on Docker IP
     env: 'LOCALSTACK_KMS',
   },
 });
