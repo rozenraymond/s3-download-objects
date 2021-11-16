@@ -16,7 +16,7 @@
     "check": "yarn run check:format && yarn run check:lint"
   },
   "dependencies": {
-    "aws-sdk": "^2.630.0",
+    "aws-sdk": "^2.814.0",
     "bluebird": "^3.7.2",
     "convict": "^5.2.0"
   },
